@@ -10,7 +10,7 @@ spec:
     image: busybox
     command: ["sleep", "3600"]
     env:  
-    - name: argocd-secret
+    - name: ARGOCD_SECRET
       valueFrom:  
         secretKeyRef:  
           name: argocd-secret    # Reference the created Kubernetes secret  
