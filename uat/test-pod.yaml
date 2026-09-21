@@ -10,11 +10,11 @@ spec:
     image: busybox
     command: ["sleep", "3600"]
     env:  
-    - name: "argocd-secret"
+    - name: argocd-secret
       valueFrom:  
         secretKeyRef:  
-          name: "argocd-secret"    # Reference the created Kubernetes secret  
-          key: argocdsecret01      # Reference the key in the secre
+          name: argocd-secret    # Reference the created Kubernetes secret  
+          key: argocdsecret01    # Reference the key in the secre
   volumes:
   - name: secrets-store-inline
     csi:
