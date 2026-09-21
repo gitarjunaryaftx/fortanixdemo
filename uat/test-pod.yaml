@@ -9,10 +9,12 @@ spec:
   - name: test-container
     image: busybox
     command: ["sleep", "3600"]
-    volumeMounts:
-    - name: secrets-store-inline
-      mountPath: "/mnt/secrets"
-      readOnly: true
+	env:  
+    - name: ARGOCD_SECRET
+      valueFrom:  
+      secretKeyRef:  
+        name: ARGOCD_SECRET    # Reference the created Kubernetes secret  
+        key: argocdsecret01    # Reference the key in the secre
   volumes:
   - name: secrets-store-inline
     csi:
@@ -20,3 +22,4 @@ spec:
       readOnly: true
       volumeAttributes:
         secretProviderClass: "fortanix-test"
+
